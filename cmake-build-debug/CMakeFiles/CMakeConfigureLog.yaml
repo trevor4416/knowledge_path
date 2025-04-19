@@ -452,3 +452,37 @@ events:
       Running the CXX compiler's linker: "C:/Program Files/JetBrains/CLion 2024.3.1.1/bin/mingw/bin/ld.exe" "-v"
       GNU ld (GNU Binutils) 2.40
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/JetBrains/CLion 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/JetBrains/CLion 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "cmake-build-debug/_deps/catch2-src/CMake/CatchMiscFunctions.cmake:12 (check_cxx_compiler_flag)"
+      - "cmake-build-debug/_deps/catch2-src/CMake/CatchMiscFunctions.cmake:119 (add_cxx_flag_if_supported_to_targets)"
+      - "cmake-build-debug/_deps/catch2-src/src/CMakeLists.txt:352 (add_build_reproducibility_settings)"
+    checks:
+      - "Performing Test HAVE_FLAG__ffile_prefix_map_C__Users_rebek_knowledge_path_cmake_build_debug__deps_catch2_src__"
+    directories:
+      source: "C:/Users/rebek/knowledge_path/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-5kuoom"
+      binary: "C:/Users/rebek/knowledge_path/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-5kuoom"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: " -Wall -Werror"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/rebek/knowledge_path/cmake-build-debug/_deps/catch2-src/extras;C:/Users/rebek/knowledge_path/cmake-build-debug/_deps/catch2-src/CMake"
+    buildResult:
+      variable: "HAVE_FLAG__ffile_prefix_map_C__Users_rebek_knowledge_path_cmake_build_debug__deps_catch2_src__"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/rebek/knowledge_path/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-5kuoom'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.3.1.1/bin/ninja/win/x64/ninja.exe" -v cmTC_5057c
+        [1/2] C:\\PROGRA~1\\JETBRA~1\\CLION2~1.1\\bin\\mingw\\bin\\G__~1.EXE -DHAVE_FLAG__ffile_prefix_map_C__Users_rebek_knowledge_path_cmake_build_debug__deps_catch2_src__  -Wall -Werror  -std=gnu++20 -fdiagnostics-color=always   -ffile-prefix-map=C:/Users/rebek/knowledge_path/cmake-build-debug/_deps/catch2-src/= -o CMakeFiles/cmTC_5057c.dir/src.cxx.obj -c C:/Users/rebek/knowledge_path/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-5kuoom/src.cxx
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\PROGRA~1\\JETBRA~1\\CLION2~1.1\\bin\\mingw\\bin\\G__~1.EXE -Wall -Werror  CMakeFiles/cmTC_5057c.dir/src.cxx.obj -o cmTC_5057c.exe -Wl,--out-implib,libcmTC_5057c.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+...
