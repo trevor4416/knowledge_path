@@ -1,0 +1,3 @@
+C:/Users/rebek/knowledge_path/cmake-build-debug/CMakeFiles/knowledge_path.dir
+C:/Users/rebek/knowledge_path/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/rebek/knowledge_path/cmake-build-debug/CMakeFiles/rebuild_cache.dir
