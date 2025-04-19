@@ -507,6 +507,15 @@ FETCHCONTENT_UPDATES_DISCONNECTED_CATCH2:BOOL=OFF
 //Git command line client
 GIT_EXECUTABLE:FILEPATH=C:/Program Files/Git/cmd/git.exe
 
+//Path to a library.
+LIB_EAY:FILEPATH=C:/Program Files/OpenSSL-Win64/lib/libcrypto.lib
+
+//Path to a file.
+OPENSSL_INCLUDE_DIR:PATH=OPENSSL_INCLUDE_DIR-NOTFOUND
+
+//Path to a library.
+SSL_EAY:FILEPATH=C:/Program Files/OpenSSL-Win64/lib/libssl.lib
+
 //Value Computed by CMake
 knowledge_path_BINARY_DIR:STATIC=C:/Users/rebek/knowledge_path/cmake-build-debug
 
@@ -813,10 +822,19 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 Catch2WithMain_GUID_CMAKE:INTERNAL=8bd3552a-2cfb-4a59-ab15-2031b97ada1e
 //Project GUID
 Catch2_GUID_CMAKE:INTERNAL=8d538cbe-01bf-4a2e-a98a-6c368fdf13d7
+//Details about finding OpenSSL
+FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[C:/Program Files/OpenSSL-Win64/lib/libcrypto.lib][C:/Program Files/OpenSSL-Win64/include][c ][v3.5.0()]
 //ADVANCED property for variable: GIT_EXECUTABLE
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //Test HAVE_FLAG__ffile_prefix_map_C__Users_rebek_knowledge_path_cmake_build_debug__deps_catch2_src__
 HAVE_FLAG__ffile_prefix_map_C__Users_rebek_knowledge_path_cmake_build_debug__deps_catch2_src__:INTERNAL=1
+JSON_BuildTests:INTERNAL=OFF
+//ADVANCED property for variable: LIB_EAY
+LIB_EAY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENSSL_INCLUDE_DIR
+OPENSSL_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SSL_EAY
+SSL_EAY-ADVANCED:INTERNAL=1
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 //CMAKE_INSTALL_PREFIX during last run
