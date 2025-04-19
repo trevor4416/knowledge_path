@@ -97,6 +97,13 @@ build CMakeFiles/Tests.dir/test/test.cpp.obj: CXX_COMPILER__Tests_unscanned_Debu
   OBJECT_DIR = CMakeFiles\Tests.dir
   OBJECT_FILE_DIR = CMakeFiles\Tests.dir\test
 
+build CMakeFiles/Tests.dir/src/openalex.cpp.obj: CXX_COMPILER__Tests_unscanned_Debug C$:/Users/rebek/knowledge_path/src/openalex.cpp || cmake_object_order_depends_target_Tests
+  DEP_FILE = CMakeFiles\Tests.dir\src\openalex.cpp.obj.d
+  FLAGS = -Wall -Werror -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/rebek/knowledge_path/src -IC:/Users/rebek/knowledge_path/test -IC:/Users/rebek/knowledge_path/lib -I"C:/Program Files/OpenSSL-Win64/include" -IC:/Users/rebek/knowledge_path/cmake-build-debug/_deps/catch2-src/src/catch2/.. -IC:/Users/rebek/knowledge_path/cmake-build-debug/_deps/catch2-build/generated-includes
+  OBJECT_DIR = CMakeFiles\Tests.dir
+  OBJECT_FILE_DIR = CMakeFiles\Tests.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Tests
@@ -105,7 +112,7 @@ build CMakeFiles/Tests.dir/test/test.cpp.obj: CXX_COMPILER__Tests_unscanned_Debu
 #############################################
 # Link the executable Tests.exe
 
-build Tests.exe: CXX_EXECUTABLE_LINKER__Tests_Debug CMakeFiles/Tests.dir/test/test.cpp.obj | _deps/catch2-build/src/libCatch2Maind.a C$:/Program$ Files/OpenSSL-Win64/lib/libssl.lib C$:/Program$ Files/OpenSSL-Win64/lib/libcrypto.lib _deps/catch2-build/src/libCatch2d.a || _deps/catch2-build/src/libCatch2Maind.a _deps/catch2-build/src/libCatch2d.a
+build Tests.exe: CXX_EXECUTABLE_LINKER__Tests_Debug CMakeFiles/Tests.dir/test/test.cpp.obj CMakeFiles/Tests.dir/src/openalex.cpp.obj | _deps/catch2-build/src/libCatch2Maind.a C$:/Program$ Files/OpenSSL-Win64/lib/libssl.lib C$:/Program$ Files/OpenSSL-Win64/lib/libcrypto.lib _deps/catch2-build/src/libCatch2d.a || _deps/catch2-build/src/libCatch2Maind.a _deps/catch2-build/src/libCatch2d.a
   FLAGS = -Wall -Werror -g
   LINK_LIBRARIES = _deps/catch2-build/src/libCatch2Maind.a  "C:/Program Files/OpenSSL-Win64/lib/libssl.lib"  "C:/Program Files/OpenSSL-Win64/lib/libcrypto.lib"  -lws2_32  -lcrypt32  _deps/catch2-build/src/libCatch2d.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Tests.dir

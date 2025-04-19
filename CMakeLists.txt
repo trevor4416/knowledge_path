@@ -27,14 +27,18 @@ include_directories(src test lib ${OPENSSL_INCLUDE_DIR})
 
 add_executable(Main
         src/main.cpp
-        lib/cpp-httplib/httplib.h lib/json/single_include/nlohmann/json.hpp
+        lib/cpp-httplib/httplib.h
+        lib/json/single_include/nlohmann/json.hpp
         src/openalex.cpp
         src/openalex.h
 )
 
 add_executable(Tests
         test/test.cpp
-        lib/cpp-httplib/httplib.h lib/json/single_include/nlohmann/json.hpp
+        lib/cpp-httplib/httplib.h
+        lib/json/single_include/nlohmann/json.hpp
+        src/openalex.cpp
+        src/openalex.h
 )
 target_link_libraries(Main PRIVATE ${OPENSSL_LIBRARIES} ws2_32 crypt32)
 target_link_libraries(Tests PRIVATE Catch2::Catch2WithMain ${OPENSSL_LIBRARIES} ws2_32 crypt32)
