@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.29.6)
 project(knowledge_path)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -31,6 +31,11 @@ add_executable(Main
         lib/json/single_include/nlohmann/json.hpp
         src/openalex.cpp
         src/openalex.h
+        src/Graph.cpp
+        src/Graph.h
+        src/Graph.h
+        src/Graph.h
+        src/Graph.h
 )
 
 add_executable(Tests
@@ -39,6 +44,8 @@ add_executable(Tests
         lib/json/single_include/nlohmann/json.hpp
         src/openalex.cpp
         src/openalex.h
+        src/Graph.h
+        src/Graph.h
 )
 target_link_libraries(Main PRIVATE ${OPENSSL_LIBRARIES} ws2_32 crypt32)
 target_link_libraries(Tests PRIVATE Catch2::Catch2WithMain ${OPENSSL_LIBRARIES} ws2_32 crypt32)
