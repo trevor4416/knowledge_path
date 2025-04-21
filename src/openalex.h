@@ -1,8 +1,6 @@
 #ifndef OPENALEX_H
 #define OPENALEX_H
 
-#endif //OPENALEX_H
-
 #define CPPHTTPLIB_OPENSSL_SUPPORT
 #include "cpp-httplib/httplib.h"
 #include "json/single_include/nlohmann/json.hpp"
@@ -30,3 +28,9 @@ json get_works(httplib::SSLClient& cli, const json ids_json);
 // also clears not_fetched
 // outgoing edges in citation graph
 void get_refs(httplib::SSLClient& cli, unordered_set<string>& not_fetched, unordered_map<string,unordered_set<string>>& fetched_refs);
+
+// fetch titles for a list of IDs
+vector<string> get_titles(httplib::SSLClient& cli,
+                          const vector<string>& ids);
+
+#endif //OPENALEX_H

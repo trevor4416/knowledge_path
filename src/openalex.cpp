@@ -65,3 +65,14 @@ void get_refs(httplib::SSLClient& cli, unordered_set<string>& not_fetched, unord
 
     }
 }
+
+vector<string> get_titles(httplib::SSLClient& cli,
+                          const vector<string>& ids) {
+    vector<string> titles;
+    titles.reserve(ids.size());
+    for (auto &id : ids) {
+        auto w = get_work(cli, id);
+        titles.push_back(w.value("title", "<no title>"));
+    }
+    return titles;
+}
