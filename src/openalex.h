@@ -8,6 +8,7 @@
 #include "json/single_include/nlohmann/json.hpp"
 
 using json = nlohmann::json;
+using namespace std;
 
 // declaration for helper functions to get data from api.openalex.org
 
@@ -16,13 +17,16 @@ using json = nlohmann::json;
 // all return either a json work object or a json array of work objects
 
 // searches for search_text in titles, abstracts, and fulltext, and returns the first num_results results
-json search_works(httplib::SSLClient& cli, const std::string& search_text, int num_results);
+json search_works(httplib::SSLClient& cli, const string& search_text, int num_results);
 
 // returns the work specified by the openalex ID, the DOI, or other supported external IDs (https://docs.openalex.org/api-entities/works/get-a-single-work)
-json get_work(httplib::SSLClient& cli, const std::string& id);
+// DO NOT USE IN IMPLEMENTATION OF FUNCTIONS THAT RETRIEVE MULTIPLE WORKS AT ONCE; IT CALLS THE API ONCE FOR EACH WORK
+json get_work(httplib::SSLClient& cli, const string& id);
 
-// gets the works that cite this one; these are the incoming edges of the citation graph; id MUST BE OpenAlex ID
-json get_cites(httplib::SSLClient& cli, const std::string& id);
+// gets the full work objects given a json containing an array of their ids, like that returned by get_refs
+json get_works(httplib::SSLClient& cli, const json ids_json);
 
-// gets the works referenced by this one; these are the outgoing edges of the citation graph
-json get_refs(httplib::SSLClient& cli, const std::string& id);
+// gets the ids of works referenced by those in not_fetched and places them in fetched_refs respectively;
+// also clears not_fetched
+// outgoing edges in citation graph
+void get_refs(httplib::SSLClient& cli, unordered_set<string>& not_fetched, unordered_map<string,unordered_set<string>>& fetched_refs);
