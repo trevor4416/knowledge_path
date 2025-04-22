@@ -1,6 +1,5 @@
 ## Ignore CMake cache & build artifacts
-build*/
-cmake-build-*/
+cmake-build-debug/
 CMakeCache.txt
 CMakeFiles/
 Makefile
