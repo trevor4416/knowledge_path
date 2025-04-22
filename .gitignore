@@ -1,1 +1,6 @@
-/test/catch/
+## Ignore CMake cache & build artifacts
+build*/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+Makefile
