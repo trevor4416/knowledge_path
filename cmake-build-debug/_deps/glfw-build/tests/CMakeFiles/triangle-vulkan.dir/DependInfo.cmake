@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/p3 again/knowledge_path/cmake-build-debug/_deps/glfw-src/deps/glad_vulkan.c" "_deps/glfw-build/tests/CMakeFiles/triangle-vulkan.dir/__/deps/glad_vulkan.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/triangle-vulkan.dir/__/deps/glad_vulkan.c.obj.d"
-  "C:/p3 again/knowledge_path/cmake-build-debug/_deps/glfw-src/tests/triangle-vulkan.c" "_deps/glfw-build/tests/CMakeFiles/triangle-vulkan.dir/triangle-vulkan.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/triangle-vulkan.dir/triangle-vulkan.c.obj.d"
+  "C:/Users/bryan/CLionProjects/knowledge_path/cmake-build-debug/_deps/glfw-src/deps/glad_vulkan.c" "_deps/glfw-build/tests/CMakeFiles/triangle-vulkan.dir/__/deps/glad_vulkan.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/triangle-vulkan.dir/__/deps/glad_vulkan.c.obj.d"
+  "C:/Users/bryan/CLionProjects/knowledge_path/cmake-build-debug/_deps/glfw-src/tests/triangle-vulkan.c" "_deps/glfw-build/tests/CMakeFiles/triangle-vulkan.dir/triangle-vulkan.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/triangle-vulkan.dir/triangle-vulkan.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

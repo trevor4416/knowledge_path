@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/p3 again/knowledge_path/cmake-build-debug/_deps/glfw-src/deps/getopt.c" "_deps/glfw-build/tests/CMakeFiles/windows.dir/__/deps/getopt.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/windows.dir/__/deps/getopt.c.obj.d"
-  "C:/p3 again/knowledge_path/cmake-build-debug/_deps/glfw-src/deps/glad_gl.c" "_deps/glfw-build/tests/CMakeFiles/windows.dir/__/deps/glad_gl.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/windows.dir/__/deps/glad_gl.c.obj.d"
-  "C:/p3 again/knowledge_path/cmake-build-debug/_deps/glfw-src/tests/windows.c" "_deps/glfw-build/tests/CMakeFiles/windows.dir/windows.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/windows.dir/windows.c.obj.d"
+  "C:/Users/bryan/CLionProjects/knowledge_path/cmake-build-debug/_deps/glfw-src/deps/getopt.c" "_deps/glfw-build/tests/CMakeFiles/windows.dir/__/deps/getopt.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/windows.dir/__/deps/getopt.c.obj.d"
+  "C:/Users/bryan/CLionProjects/knowledge_path/cmake-build-debug/_deps/glfw-src/deps/glad_gl.c" "_deps/glfw-build/tests/CMakeFiles/windows.dir/__/deps/glad_gl.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/windows.dir/__/deps/glad_gl.c.obj.d"
+  "C:/Users/bryan/CLionProjects/knowledge_path/cmake-build-debug/_deps/glfw-src/tests/windows.c" "_deps/glfw-build/tests/CMakeFiles/windows.dir/windows.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/windows.dir/windows.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

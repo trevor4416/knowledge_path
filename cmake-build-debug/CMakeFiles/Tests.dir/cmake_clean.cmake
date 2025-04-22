@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Tests.dir/src/main.cpp.obj"
+  "CMakeFiles/Tests.dir/src/main.cpp.obj.d"
   "CMakeFiles/Tests.dir/src/openalex.cpp.obj"
   "CMakeFiles/Tests.dir/src/openalex.cpp.obj.d"
   "CMakeFiles/Tests.dir/test/test.cpp.obj"

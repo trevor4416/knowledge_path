@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_RC
-  "C:/p3 again/knowledge_path/cmake-build-debug/_deps/glfw-src/examples/glfw.rc" "C:/p3 again/knowledge_path/cmake-build-debug/_deps/glfw-build/examples/CMakeFiles/heightmap.dir/glfw.rc.obj"
+  "C:/Users/bryan/CLionProjects/knowledge_path/cmake-build-debug/_deps/glfw-src/examples/glfw.rc" "C:/Users/bryan/CLionProjects/knowledge_path/cmake-build-debug/_deps/glfw-build/examples/CMakeFiles/heightmap.dir/glfw.rc.obj"
   )
 
 # The include file search paths:
@@ -19,8 +19,8 @@ set(CMAKE_RC_TARGET_INCLUDE_PATH
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/p3 again/knowledge_path/cmake-build-debug/_deps/glfw-src/deps/glad_gl.c" "_deps/glfw-build/examples/CMakeFiles/heightmap.dir/__/deps/glad_gl.c.obj" "gcc" "_deps/glfw-build/examples/CMakeFiles/heightmap.dir/__/deps/glad_gl.c.obj.d"
-  "C:/p3 again/knowledge_path/cmake-build-debug/_deps/glfw-src/examples/heightmap.c" "_deps/glfw-build/examples/CMakeFiles/heightmap.dir/heightmap.c.obj" "gcc" "_deps/glfw-build/examples/CMakeFiles/heightmap.dir/heightmap.c.obj.d"
+  "C:/Users/bryan/CLionProjects/knowledge_path/cmake-build-debug/_deps/glfw-src/deps/glad_gl.c" "_deps/glfw-build/examples/CMakeFiles/heightmap.dir/__/deps/glad_gl.c.obj" "gcc" "_deps/glfw-build/examples/CMakeFiles/heightmap.dir/__/deps/glad_gl.c.obj.d"
+  "C:/Users/bryan/CLionProjects/knowledge_path/cmake-build-debug/_deps/glfw-src/examples/heightmap.c" "_deps/glfw-build/examples/CMakeFiles/heightmap.dir/heightmap.c.obj" "gcc" "_deps/glfw-build/examples/CMakeFiles/heightmap.dir/heightmap.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

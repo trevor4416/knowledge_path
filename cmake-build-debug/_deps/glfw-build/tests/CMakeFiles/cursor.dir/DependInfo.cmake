@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/p3 again/knowledge_path/cmake-build-debug/_deps/glfw-src/deps/glad_gl.c" "_deps/glfw-build/tests/CMakeFiles/cursor.dir/__/deps/glad_gl.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/cursor.dir/__/deps/glad_gl.c.obj.d"
-  "C:/p3 again/knowledge_path/cmake-build-debug/_deps/glfw-src/tests/cursor.c" "_deps/glfw-build/tests/CMakeFiles/cursor.dir/cursor.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/cursor.dir/cursor.c.obj.d"
+  "C:/Users/bryan/CLionProjects/knowledge_path/cmake-build-debug/_deps/glfw-src/deps/glad_gl.c" "_deps/glfw-build/tests/CMakeFiles/cursor.dir/__/deps/glad_gl.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/cursor.dir/__/deps/glad_gl.c.obj.d"
+  "C:/Users/bryan/CLionProjects/knowledge_path/cmake-build-debug/_deps/glfw-src/tests/cursor.c" "_deps/glfw-build/tests/CMakeFiles/cursor.dir/cursor.c.obj" "gcc" "_deps/glfw-build/tests/CMakeFiles/cursor.dir/cursor.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
