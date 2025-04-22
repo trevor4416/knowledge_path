@@ -28,19 +28,25 @@ class Graph {
 public:
     size_t add_node(const string &id, const string &title);
     void   add_edge(const string &from_id, const string &to_id);
-    vector<size_t> bfs(size_t start) const;
-    vector<size_t> shortest_path(size_t src, size_t dst) const;
-    void  graph_by_bfs(httplib::SSLClient& cli, const string &start_id_in, const string &target_id_in);
-    void  graph_by_befs(httplib::SSLClient& cli, const string &start_id_in, const string &target_id_in);
+
+    // two ways to build minimal citation graph:
+    void graph_by_bfs(httplib::SSLClient& cli,
+                      const string &start_id_in,
+                      const string &target_id_in);
+    void graph_by_befs(httplib::SSLClient& cli,
+                       const string &start_id_in,
+                       const string &target_id_in);
+
     const vector<Node>               &nodes()          const { return nodes_; }
     const vector<pair<size_t,size_t>> &directed_edges() const { return dir_;   }
-    size_t get_size() { return nodes_.size(); }
+    size_t get_size()                        const { return nodes_.size(); }
+
 private:
     size_t                             max_depth = 10;
-    size_t                             max_size = 500;
+    size_t                             max_size  = 500;
     vector<Node>                       nodes_;
     unordered_map<string,size_t>       idx_;
     vector<pair<size_t,size_t>>        dir_;
 };
 
-#endif
+#endif // GRAPH_H
