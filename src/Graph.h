@@ -30,7 +30,7 @@ public:
     void   add_edge(const string &from_id, const string &to_id);
     vector<size_t> bfs(size_t start) const;
     vector<size_t> shortest_path(size_t src, size_t dst) const;
-    Graph(httplib::SSLClient& cli, const string &src_id, const string &target_id);
+    Graph(httplib::SSLClient& cli, const string &start_id_in, const string &target_id_in);
     const vector<Node>               &nodes()          const { return nodes_; }
     const vector<pair<size_t,size_t>> &directed_edges() const { return dir_;   }
 private:

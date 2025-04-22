@@ -21,16 +21,12 @@ json search_works(httplib::SSLClient& cli, const string& search_text, int num_re
 // DO NOT USE IN IMPLEMENTATION OF FUNCTIONS THAT RETRIEVE MULTIPLE WORKS AT ONCE; IT CALLS THE API ONCE FOR EACH WORK
 json get_work(httplib::SSLClient& cli, const string& id);
 
-// gets the full work objects given a json containing an array of their ids, like that returned by get_refs
-json get_works(httplib::SSLClient& cli, const json ids_json);
-
 // gets the ids of works referenced by those in not_fetched and places them in fetched_refs respectively;
 // also clears not_fetched
 // outgoing edges in citation graph
-void get_refs(httplib::SSLClient& cli, unordered_set<string>& not_fetched, unordered_map<string,unordered_set<string>>& fetched_refs);
+void get_refs(httplib::SSLClient& cli, unordered_set<string>& not_fetched, unordered_map<string,unordered_set<string>>& fetched_refs, int year_target);
 
 // fetch titles for a list of IDs
-vector<string> get_titles(httplib::SSLClient& cli,
-                          const vector<string>& ids);
+vector<string> get_titles(httplib::SSLClient& cli, const vector<string>& ids);
 
 #endif //OPENALEX_H

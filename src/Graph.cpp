@@ -1,6 +1,7 @@
 #include "Graph.h"
 #include <iostream>
 #include "openalex.h"
+#include <chrono>
 
 size_t Graph::add_node(const string& id, const string& title) {
     auto it = idx_.find(id);
@@ -74,16 +75,21 @@ vector<size_t> Graph::shortest_path(size_t src, size_t target) const {
 }
 
 // Graph ctor: BFS over references only (no citations) to build minimal graph
+// these IDs may be DOIs
 Graph::Graph(httplib::SSLClient& cli,
-             const string& start_id,
-             const string& target_id)
+             const string& start_id_in,
+             const string& target_id_in)
 {
+    auto start_time = chrono::high_resolution_clock::now();
     // references only go from newer → older
-    json start = get_work(cli, start_id);
-    json target = get_work(cli, target_id);
+    json start = get_work(cli, start_id_in);
+    json target = get_work(cli, target_id_in);
 
     int year_start = start.value("publication_year", 0);
     int year_target = target.value("publication_year", 0);
+
+    string start_id = start["id"];
+    string target_id = target["id"];
 
     if (year_start < year_target) {
         cout << "Error: Start paper must be newer than end paper.\n";
@@ -99,7 +105,7 @@ Graph::Graph(httplib::SSLClient& cli,
     distance[start_id] = 0;
     q.push(start_id);
     not_fetched.insert(start_id);
-    get_refs(cli, not_fetched, fetched_refs);
+    get_refs(cli, not_fetched, fetched_refs, year_target);
 
     size_t iter = 0;
     while (!q.empty()
@@ -108,8 +114,8 @@ Graph::Graph(httplib::SSLClient& cli,
     {
         string u = q.front(); q.pop();
 
-        if (not_fetched.erase(u))
-            get_refs(cli, not_fetched, fetched_refs);
+        if (not_fetched.contains(u))
+            get_refs(cli, not_fetched, fetched_refs, year_target);
 
         // traverse references only
         for (auto &v : fetched_refs[u]) {
@@ -138,8 +144,13 @@ Graph::Graph(httplib::SSLClient& cli,
 
     // build local Graph nodes and edges along that path
     add_node(id_path[0], titles[0]);
+    cout << titles[0] << endl;
     for (size_t i = 1; i < id_path.size(); ++i) {
+        cout << titles[i] << endl;
         add_node(id_path[i], titles[i]);
         add_edge(id_path[i-1], id_path[i]);
     }
+    auto end_time = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(end_time - start_time);
+    cout << "Time elapsed: " << duration.count() << " ms" << endl;
 }
