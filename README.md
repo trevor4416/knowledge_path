@@ -7,9 +7,9 @@ Find the shortest citation path between two academic papers using OpenAlex data.
 - **OpenSSL 3.5+**  
   - Windows installer: https://slproweb.com/products/Win32OpenSSL.html  
   - Install to `C:/Program Files/OpenSSL-Win64`
-  - If you see runtime errors about missing DLLs, copy the two files below into your app’s working directory (or add that folder to your `PATH`):
-    - `C:/Program Files/OpenSSL-Win64/bin/libssl-3.dll`
-    - `C:/Program Files/OpenSSL-Win64/bin/libcrypto-3.dll`
+  -If you get runtime errors about missing OpenSSL DLLs, copy these two files into your executable’s working directory (or add their folder to your PATH):
+    -"C:/Program Files/OpenSSL-Win64/bin/libssl-3.dll"
+    -"C:/Program Files/OpenSSL-Win64/bin/libcrypto-3.dll"
 - **GLFW** (https://www.glfw.org)  
 - **OpenGL** (provided by your graphics driver)
 - **ImGui** (automatically fetched by CMake)  
