@@ -1,0 +1,1 @@
+ "_deps/catch2-build/src/libCatch2Maind.a" "C:/Program Files/OpenSSL-Win64/lib/libssl.lib" "C:/Program Files/OpenSSL-Win64/lib/libcrypto.lib" -lws2_32 -lcrypt32 "_deps/catch2-build/src/libCatch2d.a" -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

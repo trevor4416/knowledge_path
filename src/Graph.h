@@ -34,6 +34,7 @@ public:
     void  graph_by_befs(httplib::SSLClient& cli, const string &start_id_in, const string &target_id_in);
     const vector<Node>               &nodes()          const { return nodes_; }
     const vector<pair<size_t,size_t>> &directed_edges() const { return dir_;   }
+    size_t get_size() { return nodes_.size(); }
 private:
     size_t                             max_depth = 10;
     size_t                             max_size = 500;
