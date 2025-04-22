@@ -74,9 +74,9 @@ vector<size_t> Graph::shortest_path(size_t src, size_t target) const {
     return path;
 }
 
-// Graph ctor: BFS over references only (no citations) to build minimal graph
+// Graph constructed through BFS over references only (no citations) to build minimal graph
 // these IDs may be DOIs
-Graph::Graph(httplib::SSLClient& cli,
+void Graph::graph_by_bfs(httplib::SSLClient& cli,
              const string& start_id_in,
              const string& target_id_in)
 {
@@ -119,7 +119,7 @@ Graph::Graph(httplib::SSLClient& cli,
 
         // traverse references only
         for (auto &v : fetched_refs[u]) {
-            if (!distance.count(v)) {
+            if (!distance.contains(v)) {
                 distance[v] = distance[u] + 1;
                 prev[v]     = u;
                 q.push(v);
@@ -129,7 +129,7 @@ Graph::Graph(httplib::SSLClient& cli,
     }
 
     // if no path found, leave graph empty
-    if (!distance.count(target_id))
+    if (!distance.contains(target_id))
         return;
 
     // reconstruct ID path
@@ -143,14 +143,119 @@ Graph::Graph(httplib::SSLClient& cli,
     vector<string> titles = get_titles(cli, id_path);
 
     // build local Graph nodes and edges along that path
-    add_node(id_path[0], titles[0]);
-    cout << titles[0] << endl;
+    this->add_node(id_path[0], titles[0]);
     for (size_t i = 1; i < id_path.size(); ++i) {
-        cout << titles[i] << endl;
-        add_node(id_path[i], titles[i]);
-        add_edge(id_path[i-1], id_path[i]);
+        this->add_node(id_path[i], titles[i]);
+        this->add_edge(id_path[i-1], id_path[i]);
     }
     auto end_time = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::milliseconds>(end_time - start_time);
     cout << "Time elapsed: " << duration.count() << " ms" << endl;
 }
+
+// Graph constructed through BeFS over references only (no citations) to build minimal graph
+// these IDs may be DOIs
+// Greedy heuristic relies on similariy in concepts field with target
+void Graph::graph_by_befs(httplib::SSLClient& cli,
+                          const string& start_id_in,
+                          const string& target_id_in)
+{
+    auto start_time = chrono::high_resolution_clock::now();
+
+    json start = get_work(cli, start_id_in);
+    json target = get_work(cli, target_id_in);
+
+    int year_start = start.value("publication_year", 0);
+    int year_target = target.value("publication_year", 0);
+
+    if (year_start < year_target) {
+        cout << "Error: Start paper must be newer than end paper.\n";
+        return;
+    }
+
+    json start_concepts = start["concepts"];
+    size_t start_num_refs = start["referenced_works"].size();
+
+    unordered_map<string, float> target_concepts;
+    for (const auto& concept_j : target["concepts"])
+        target_concepts.emplace(concept_j["id"], concept_j.value("score", 0.0f));
+
+    string start_id = start["id"];
+    string target_id = target["id"];
+    float start_h = get_heuristic(start_concepts, start_num_refs, target_concepts);
+
+    auto cmp_heuristic = [](const pair<float, string>& left, const pair<float, string>& right) {
+        return left.first < right.first;
+    };
+
+    unordered_map<string, size_t> distance;
+    unordered_map<string, string> prev;
+    unordered_map<string, size_t> depth_from_start;
+    unordered_set<string> visited;
+
+    priority_queue<
+        pair<float, string>,
+        vector<pair<float, string>>,
+        decltype(cmp_heuristic)
+    > q(cmp_heuristic);
+
+    // Initialize
+    q.push({start_h, start_id});
+    distance[start_id] = 0;
+    depth_from_start[start_id] = 0;
+
+    size_t restart_limit = 5;
+    size_t restarts = 0;
+
+    while (!q.empty() && !distance.count(target_id)) {
+        auto [heuristic, u_id] = q.top(); q.pop();
+        if (visited.contains(u_id)) continue;
+        visited.insert(u_id);
+
+        size_t depth = depth_from_start[u_id];
+        if (depth > max_depth) {
+            if (restarts++ < restart_limit) {
+                cout << "Restarting from source\n";
+                q = decltype(q)(cmp_heuristic); // clear queue
+                visited.clear();
+                q.push({start_h, start_id});
+                continue;
+            }
+                cout << "Exceeded restart limit\n";
+                return;
+        }
+
+        auto vs = get_refs_befs(cli, u_id, target_concepts, year_target);
+        for (const auto& [v_h, v_id] : vs) {
+            if (!visited.contains(v_id) && !distance.contains(v_id)) {
+                distance[v_id] = distance[u_id] + 1;
+                prev[v_id] = u_id;
+                depth_from_start[v_id] = depth + 1;
+                q.push({v_h, v_id});
+            }
+        }
+    }
+
+    if (!distance.count(target_id)) return;
+
+    // Reconstruct ID path
+    vector<string> id_path;
+    for (string v = target_id; v != start_id; v = prev[v])
+        id_path.push_back(v);
+    id_path.push_back(start_id);
+    reverse(id_path.begin(), id_path.end());
+
+    // Fetch titles once
+    vector<string> titles = get_titles(cli, id_path);
+    this->add_node(id_path[0], titles[0]);
+
+    for (size_t i = 1; i < id_path.size(); ++i) {
+        this->add_node(id_path[i], titles[i]);
+        this->add_edge(id_path[i - 1], id_path[i]);
+    }
+
+    auto end_time = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(end_time - start_time);
+    cout << "Time elapsed: " << duration.count() << " ms" << endl;
+}
+

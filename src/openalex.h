@@ -29,4 +29,10 @@ void get_refs(httplib::SSLClient& cli, unordered_set<string>& not_fetched, unord
 // fetch titles for a list of IDs
 vector<string> get_titles(httplib::SSLClient& cli, const vector<string>& ids);
 
+// heuristic for befs
+float get_heuristic(const json& current_concepts, size_t current_num_refs, const unordered_map<string,float>& target_concepts);
+
+// get refs with their heuristics for befs
+vector<pair<float,string>> get_refs_befs(httplib::SSLClient& cli, const string& id, const unordered_map<string,float>& target_concepts, const int year_target);
+
 #endif //OPENALEX_H
