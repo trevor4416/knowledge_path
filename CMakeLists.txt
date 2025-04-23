@@ -42,8 +42,7 @@ file(GLOB IMGUI_SOURCES
         extern/imgui/backends/imgui_impl_opengl3.cpp
 )
 
-add_library(imgui STATIC ${IMGUI_SOURCES}
-        src/main.cpp)
+add_library(imgui STATIC ${IMGUI_SOURCES})
 target_include_directories(imgui PUBLIC
         extern/imgui
         extern/imgui/backends
@@ -61,7 +60,6 @@ add_executable(Main
         src/Graph.h
         src/Graph.h
         src/Graph.h
-        src/main.cpp
 )
 
 add_executable(Tests
@@ -72,7 +70,6 @@ add_executable(Tests
         src/openalex.h
         src/Graph.h
         src/Graph.h
-        src/main.cpp
 )
 target_include_directories(Main PRIVATE
         extern/imgui
