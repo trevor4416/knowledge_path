@@ -16,7 +16,8 @@ Find the shortest citation path between two academic papers using OpenAlex data.
 
 - **ImGui** (automatically fetched by CMake)
   - If you encounter problems cloning this, use the following:
-    - git submodule add https://github.com/ocornut/imgui.git extern/imgui
+    - Reload the cmake project. If that doesn't work:
+      - git submodule add https://github.com/ocornut/imgui.git extern/imgui
 - **GLFW** (included in ImGui submodule)
 - **OpenGL** (included in ImGui submodule)
 - **cpp-httplib** and **nlohmann/json** (bundled as submodules)
