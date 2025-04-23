@@ -51,7 +51,7 @@ void get_refs(httplib::SSLClient& cli, unordered_set<string>& not_fetched, unord
             if (it == 49) break;
             it++;
         }
-
+        request_str.erase(request_str.length() - 1);
 
         // GET request
         httplib::Result res = cli.Get(request_str); // GET request from works endpoint
