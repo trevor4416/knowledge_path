@@ -2,45 +2,37 @@
 #define OPENALEX_H
 
 #define CPPHTTPLIB_OPENSSL_SUPPORT
-
 #include "cpp-httplib/httplib.h"
 #include "json/single_include/nlohmann/json.hpp"
 
 using json = nlohmann::json;
 using namespace std;
 
-// OpenAlex API helper functions. All take an httplib::SSLClient&.
+// declaration for helper functions to get data from api.openalex.org
 
-// Search works by text; returns up to num_results results.
-json search_works(httplib::SSLClient& cli,
-                  const string& search_text,
-                  int num_results);
+// these helper functions take an httplib::SSLClient as a parameter,
+// so that a new client need not be created for every function call
+// all return either a json work object or a json array of work objects
 
-// Get a single work by OpenAlex ID or DOI.
-// Note: one API call per invocation; not intended for bulk retrieval.
-json get_work(httplib::SSLClient& cli,
-              const string& id);
+// searches for search_text in titles, abstracts, and fulltext, and returns the first num_results results
+json search_works(httplib::SSLClient& cli, const string& search_text, int num_results);
 
-// Fetch outgoing reference IDs for works in not_fetched.
-// Stores results in fetched_refs; skips works older than year_target.
-void get_refs(httplib::SSLClient& cli,
-              unordered_set<string>& not_fetched,
-              unordered_map<string, unordered_set<string>>& fetched_refs,
-              int year_target);
+// returns the work specified by the openalex ID, the DOI, or other supported external IDs (https://docs.openalex.org/api-entities/works/get-a-single-work)
+// DO NOT USE IN IMPLEMENTATION OF FUNCTIONS THAT RETRIEVE MULTIPLE WORKS AT ONCE; IT CALLS THE API ONCE FOR EACH WORK
+json get_work(httplib::SSLClient& cli, const string& id);
 
-// Retrieve titles for a list of work IDs.
-vector<string> get_titles(httplib::SSLClient& cli,
-                          const vector<string>& ids);
+// gets the ids of works referenced by those in not_fetched and places them in fetched_refs respectively;
+// also clears not_fetched
+// outgoing edges in citation graph
+void get_refs(httplib::SSLClient& cli, unordered_set<string>& not_fetched, unordered_map<string,unordered_set<string>>& fetched_refs, int year_target);
 
-// Compute heuristic score for Best-First Search.
-float get_heuristic(const json& current_concepts,
-                    size_t current_num_refs,
-                    const unordered_map<string, float>& target_concepts);
+// fetch titles for a list of IDs
+vector<string> get_titles(httplib::SSLClient& cli, const vector<string>& ids);
 
-// Get references with heuristic scores for Best-First Search.
-vector<pair<float, string>> get_refs_befs(httplib::SSLClient& cli,
-                                          const string& id,
-                                          const unordered_map<string, float>& target_concepts,
-                                          int year_target);
+// heuristic for befs
+float get_heuristic(const json& current_concepts, size_t current_num_refs, const unordered_map<string,float>& target_concepts);
 
-#endif // OPENALEX_H
+// get refs with their heuristics for befs
+vector<pair<float,string>> get_refs_befs(httplib::SSLClient& cli, const string& id, const unordered_map<string,float>& target_concepts, const int year_target);
+
+#endif //OPENALEX_H
