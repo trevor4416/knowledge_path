@@ -89,11 +89,6 @@ void drawShortestPath(Graph graph) {
                         case 2:
                             ImGui::Text("%s", graph.nodes().at(row - 1).get_id().c_str());
                             break;
-                        /*
-                        case 3:
-                            ImGui::Text("N/A");
-                            break;
-                        */
                     }
                 }
                 // if we are in the header row, print header
