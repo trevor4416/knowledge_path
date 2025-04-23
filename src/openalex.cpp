@@ -78,7 +78,7 @@ void get_refs(httplib::SSLClient& cli, unordered_set<string>& not_fetched, unord
         if (j.size() == 0 && not_fetched.size() != 0) {
             for (const string& single_ref : not_fetched) {
                 cout << "Single Fetch!" << endl;
-                json j_single = get_work(cli,single_ref); // TODO: optimize for id, publication_year, referenced_works only
+                json j_single = get_work(cli,single_ref);
                 if (!j_single.is_null() && j_single.value("publication_year",0) >= year_target) { // only fetch references for works that aren't older than the target
                     for (const auto& ref : j_single["referenced_works"]) {
                         fetched_refs[single_ref].emplace(ref);
