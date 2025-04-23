@@ -108,11 +108,6 @@ void drawShortestPath(Graph graph) {
                         case 2:
                             ImGui::Text("Paper ID:");
                             break;
-                        /*
-                        case 3:
-                            ImGui::Text("DOI:");
-                            break;
-                        */
                     }
                 }
             }
@@ -149,13 +144,13 @@ int main() {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
-    io.FontGlobalScale = 2.0f; // scales imGui stuff
+    io.FontGlobalScale = 2.0f; // scales all imGui stuff
     ImGuiStyle& style = ImGui::GetStyle();
     // some custom spacing stuff
     style.WindowPadding = ImVec2(20, 20);
     style.ItemSpacing = ImVec2(15, 15);
     style.FramePadding = ImVec2(10, 6);
-    ImGui::StyleColorsDark(); // dark mode :O
+    ImGui::StyleColorsDark(); // dark mode
 
     // connects imgui to glfw and openGL
     ImGui_ImplGlfw_InitForOpenGL(window, true);
@@ -195,7 +190,7 @@ int main() {
                     // increase font scale and draw text, then set scale back down
                     ImGui::SetWindowFontScale(1.8f);
                     ImGui::Text("Find Shortest Path Between Papers");
-                    ImGui::SetWindowFontScale(1.0f); // Reset font scale for body
+                    ImGui::SetWindowFontScale(1.0f);
 
                     // more text, add spacing
                     ImGui::TextWrapped("Discover how two papers are connected through their citations");
@@ -206,13 +201,11 @@ int main() {
                     ImGui::InputText("Paper 2", paper2, IM_ARRAYSIZE(paper2));
                     ImGui::Spacing();
 
-                    // button to find the shortest path and update the visualization
+                    // button to find the shortest path via befs and update the visualization
                     if (ImGui::Button("Find Shortest Path - befs")) {
                         count = count + 1;
                         if (count > 0) {
                             paperGraph = Graph();
-                            //paper1 = "";
-                            //paper2 = "";
                         }
                         log_messages.emplace_back(std::string("Finding path..."));
                         paperGraph.graph_by_befs(cli, paper1, paper2);
@@ -229,12 +222,11 @@ int main() {
                         }
                     }
                     ImGui::Spacing();
+                    // button for bfs path
                     if (ImGui::Button("Find Shortest Path - bfs")) {
                         count = count + 1;
                         if (count > 0) {
                             paperGraph = Graph();
-                            //paper1 = "";
-                            //paper2 = "";
                         }
                         log_messages.emplace_back(std::string("Finding path..."));
                         paperGraph.graph_by_bfs(cli, paper1, paper2);
