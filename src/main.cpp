@@ -207,7 +207,7 @@ int main() {
                     ImGui::Spacing();
 
                     // button to find the shortest path and update the visualization
-                    if (ImGui::Button("Find Shortest Path")) {
+                    if (ImGui::Button("Find Shortest Path - befs")) {
                         count = count + 1;
                         if (count > 0) {
                             paperGraph = Graph();
@@ -216,6 +216,28 @@ int main() {
                         }
                         log_messages.emplace_back(std::string("Finding path..."));
                         paperGraph.graph_by_befs(cli, paper1, paper2);
+
+                        // if there are nodes in the graph, output the size
+                        if (paperGraph.get_size() != 0) {
+                            log_messages.emplace_back(
+                                std::string("Shortest path found with size: ") + std::to_string(paperGraph.get_size())
+                            );
+                        }
+                        // if no nodes, output no connection
+                        else {
+                            log_messages.emplace_back(std::string("No connection found."));
+                        }
+                    }
+                    ImGui::Spacing();
+                    if (ImGui::Button("Find Shortest Path - bfs")) {
+                        count = count + 1;
+                        if (count > 0) {
+                            paperGraph = Graph();
+                            //paper1 = "";
+                            //paper2 = "";
+                        }
+                        log_messages.emplace_back(std::string("Finding path..."));
+                        paperGraph.graph_by_bfs(cli, paper1, paper2);
 
                         // if there are nodes in the graph, output the size
                         if (paperGraph.get_size() != 0) {
