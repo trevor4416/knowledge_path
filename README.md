@@ -15,7 +15,9 @@ Find the shortest citation path between two academic papers using OpenAlex data.
     - "C:/Program Files/OpenSSL-Win64/lib/VC/x64/MD/libssl.lib"
 - **GLFW** (https://www.glfw.org)  
 - **OpenGL** (provided by your graphics driver)
-- **ImGui** (automatically fetched by CMake)  
+- **ImGui** (automatically fetched by CMake)
+  - If you encounter problems cloning this, use the following:
+    - git submodule add https://github.com/ocornut/imgui.git extern/imgui
 - **cpp-httplib** and **nlohmann/json** (bundled as submodules)
 
 ## Clone & Build
