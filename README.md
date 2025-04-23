@@ -5,7 +5,7 @@ Find the shortest citation path between two academic papers using OpenAlex data.
 - **C++20** compiler (GCC ≥ 10, Clang ≥ 11, MSVC 2019+)  
 - **CMake** ≥ 3.16  
 - **OpenSSL 3.5+**  
-  - Windows installer: https://slproweb.com/products/Win32OpenSSL.html  
+  - Windows installer: https://slproweb.com/products/Win32OpenSSL.html; install the full version, *not* the light version.
   - Install to `C:/Program Files/OpenSSL-Win64`
   - If you get runtime errors about missing OpenSSL DLLs, copy these two files into your executable’s working directory (or add their folder to your PATH):
     - "C:/Program Files/OpenSSL-Win64/bin/libssl-3.dll"
